@@ -1,0 +1,53 @@
+<project name="paranormal" default="help" basedir=".">
+
+	<description>paranormal</description>
+
+
+	<!-- set global properties for this build -->
+	<property name="lib.dir" location="lib"/>
+
+	<tstamp/>
+
+
+	<target name="help">
+		<echo message="use 'ant -p' to see build targets"/>
+	</target>
+
+
+	<target name="init">
+		<mkdir dir="${lib.dir}"/>
+	</target>
+
+
+	<!-- get node.js exe file for windows -->
+	<target name="node" description="Download node.js binary for Windows (32-bit)">
+		<!-- TODO 64bit? http://nodejs.org/dist/v0.8.20/x64/node.exe -->
+		<!-- TODO don't overwrite node.exe if it already exists -->
+		<mkdir dir="${lib.dir}/node"/>
+		<get src="http://nodejs.org/dist/v0.8.20/node.exe" dest="${lib.dir}/node/"/>
+	</target>
+
+	<!-- get NPM (depends on node?) -->
+	<target name="npm" description="Download NPM (Node Package Manager)">
+		<!-- TODO don't overwrite files if they already exist? -->
+		<get src="http://nodejs.org/dist/npm/npm-1.2.9.zip" dest="${lib.dir}/node/"/>
+		<unzip src="${lib.dir}/node/npm-1.2.9.zip" dest="${lib.dir}/node/"/>
+	</target>
+
+	<!-- get grunt (depends on npm?) -->
+	<target name="grunt" description="Install Grunt build tool for JavaScript projects">
+		<!-- TODO don't overwrite files if they already exist? -->
+		<!-- "%~dp0\node.exe" "%~dp0\.\node_modules\npm\bin\npm-cli.js" -->
+		<exec executable="node" dir="${lib.dir}/node/">
+			<!-- node command to run npm -->
+			<arg value="${lib.dir}/node/node_modules/npm/bin/npm-cli.js"/>
+			<!-- npm command -->
+			<arg value="install"/>
+			<!-- TODO global npm grunt? will it work when coding in another project? where does it install to? -->
+			<arg value="-g"/>
+			<arg value="grunt"/>
+		</exec>
+	</target>
+
+
+</project>
