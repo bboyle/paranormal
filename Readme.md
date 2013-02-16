@@ -14,6 +14,7 @@ Assumptions
 * This repo can be zipped and is useful offline (see above)
 * Portable web browsers are available (see above)
 * JavaScript is more familiar to users than other programming languages
+* Cucumber (BDD) would be nice for the ease of reading/writing Gherkin
 * Multiple test frameworks may work better than a single one
 * People are not afraid to learn a little to get something working.
 
