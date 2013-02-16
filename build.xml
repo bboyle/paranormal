@@ -49,5 +49,13 @@
 		</exec>
 	</target>
 
+	<!-- get phantomjs -->
+	<target name="phantomjs" description="Install PhantomJS headless webkit browser">
+		<!-- TODO don't overwrite files if already exist -->
+		<mkdir dir="${lib.dir}/phantomjs"/>
+		<get src="http://phantomjs.googlecode.com/files/phantomjs-1.8.1-windows.zip" dest="${lib.dir}/phantomjs"/>
+		<unzip src="${lib.dir}/phantomjs/phantomjs-1.8.1-windows.zip" dest="${lib.dir}/phantomjs/"/>
+	</target>
+
 
 </project>
