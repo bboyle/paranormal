@@ -2,7 +2,7 @@
 * https://github.com/bboyle/paranormal
 * Copyright (c) 2013 Ben Boyle; Licensed MIT */
 
-/*! THIS BANNER WILL BE REMOVED BY GRUNT CONCAT
+/*! THIS BANNER WILL BE REMOVED BY GRUNT MINIFICATION
 
 	Try it and see
 

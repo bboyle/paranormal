@@ -1,0 +1,21 @@
+{
+  "name": "PARANORMAL",
+  "version": "0.0.0",
+  "description": "Sample project for exploring UX test frameworks",
+  "main": "grunt.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "qunitjs": "~1.11.0"
+  },
+  "devDependencies": {
+    "qunitjs": "~1.11.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": "",
+  "author": "Ben Boyle",
+  "license": "BSD"
+}

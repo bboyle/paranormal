@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         'Ben Boyle; Licensed MIT */'
     },
     lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
+      files: ['grunt.js', 'lib/**/*.js', 'test/*.js']
     },
     qunit: {
       files: ['test/**/*.html']
@@ -51,6 +51,9 @@ module.exports = function(grunt) {
     },
     uglify: {}
   });
+
+  // run all tests
+  grunt.registerTask('test', 'lint qunit');
 
   // Default task.
   grunt.registerTask('default', 'lint qunit concat min');

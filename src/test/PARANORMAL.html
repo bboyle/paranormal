@@ -2,20 +2,18 @@
 <html lang="en-AU">
 <head>
 	<title>PARANORMAL</title>
+
+	<link rel="stylesheet" href="lib/qunit.css">
+	<script src="lib/qunit.js"></script>
+
 </head>
 <body>
 
-	<script>
-		// QUnit test
+	<div id="qunit"></div>
 
-		module( 'PARANORMAL dummy module' );
+	<div id="qunit-fixture"></div>
 
-		test( 'dummy test should pass', 1, function() {
-
-			strictEqual( true, true, 'true is true' );
-
-		});
-	</script>
+	<script src="test.js"></script>
 
 </body>
 </html>
