@@ -54,8 +54,15 @@
 		<!-- TODO don't overwrite files if already exist -->
 		<mkdir dir="${lib.dir}/phantomjs"/>
 		<get src="http://phantomjs.googlecode.com/files/phantomjs-1.8.1-windows.zip" dest="${lib.dir}/phantomjs"/>
-		<unzip src="${lib.dir}/phantomjs/phantomjs-1.8.1-windows.zip" dest="${lib.dir}/phantomjs/"/>
+		<unzip src="${lib.dir}/phantomjs/phantomjs-1.8.1-windows.zip" dest="${lib.dir}/phantomjs"/>
 	</target>
 
+
+	<!-- get jruby -->
+	<target name="jruby" description="Get JRuby environment">
+		<mkdir dir="${lib.dir}/jruby"/>
+		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.2/jruby-bin-1.7.2.zip" dest="${lib.dir}/jruby"/>
+		<unzip src="${lib.dir}/jruby-bin-1.7.2.zip" dest="${lib.dir}/jruby"/>
+	</target>
 
 </project>

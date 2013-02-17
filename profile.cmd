@@ -12,5 +12,8 @@ doskey grunt=grunt.cmd
 echo adding phantomjs to path
 set PATH=%~d0%~p0lib\phantomjs\phantomjs-1.8.1-windows;%PATH%
 
+echo adding jruby to path
+set PATH=%~d0%~p0lib\jruby\jruby-1.7.2\bin;%PATH%
+
 echo ready
 cls
