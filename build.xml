@@ -60,9 +60,24 @@
 
 	<!-- get jruby -->
 	<target name="jruby" description="Get JRuby environment">
+		<!-- TODO don't overwrite files if already exist -->
 		<mkdir dir="${lib.dir}/jruby"/>
 		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.2/jruby-bin-1.7.2.zip" dest="${lib.dir}/jruby"/>
-		<unzip src="${lib.dir}/jruby-bin-1.7.2.zip" dest="${lib.dir}/jruby"/>
+		<unzip src="${lib.dir}/jruby/jruby-bin-1.7.2.zip" dest="${lib.dir}/jruby"/>
 	</target>
+
+	<!-- get wac (colour terminal for windows) -->
+	<target name="wac" description="Get wac (Windows ANSI Color) utility">
+		<mkdir dir="${lib.dir}/wac"/>
+		<get src="https://github.com/aslakhellesoy/wac/raw/master/wac.exe" dest="${lib.dir}/wac"/>
+
+		<!-- create alias for cucumber -->
+		<echo file="${lib.dir}/wac/cucumber.cmd">
+:: pipe (jruby) cucumber through wac (Windows ANSI color)
+@echo off
+"%~dp0\..\jruby\jruby-1.7.2\bin\jruby" "%~dp0\..\jruby\jruby-1.7.2\bin\cucumber" %* | "%~dp0\wac.exe"
+		</echo>
+	</target>
+
 
 </project>
