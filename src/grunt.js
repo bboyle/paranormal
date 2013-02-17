@@ -11,12 +11,25 @@ module.exports = function(grunt) {
         '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
         'Ben Boyle; Licensed MIT */'
     },
+
+    // QA
     lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'test/*.js']
+      files: ['grunt.js', 'lib/**/*.js', 'test/*.js', 'features/**/*.js']
     },
+
     qunit: {
       files: ['test/**/*.html']
     },
+
+    cucumberjs: {
+      executable: "../../cucumber", // relative to node_modules/grunt-cucumber/bin?
+      features: "features",
+      steps: "features/step_definitions",
+      tags: "@dev"
+    },
+
+
+    // prepping for production
     concat: {
       dist: {
         src: ['<banner:meta.banner>', '<file_strip_banner:lib/PARANORMAL.js>'],
@@ -29,6 +42,8 @@ module.exports = function(grunt) {
         dest: 'dist/PARANORMAL.min.js'
       }
     },
+
+    // config
     watch: {
       files: '<config:lint.files>',
       tasks: 'lint qunit'
@@ -52,10 +67,14 @@ module.exports = function(grunt) {
     uglify: {}
   });
 
+
+  // load libs
+  grunt.loadNpmTasks('grunt-cucumber');
+
   // run all tests
-  grunt.registerTask('test', 'lint qunit');
+  grunt.registerTask('test', 'lint qunit cucumberjs');
 
   // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+  grunt.registerTask('default', 'test concat min');
 
 };

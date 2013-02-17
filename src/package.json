@@ -10,7 +10,9 @@
     "qunitjs": "~1.11.0"
   },
   "devDependencies": {
-    "qunitjs": "~1.11.0"
+    "qunitjs": "~1.11.0",
+    "grunt-cucumber": "~0.1.1",
+    "cucumber": "~0.3.0"
   },
   "scripts": {
     "test": "grunt test"
