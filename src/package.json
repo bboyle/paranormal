@@ -1,23 +1,26 @@
 {
-  "name": "PARANORMAL",
-  "version": "0.0.0",
-  "description": "Sample project for exploring UX test frameworks",
-  "main": "grunt.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {
-    "qunitjs": "~1.11.0"
-  },
-  "devDependencies": {
-    "qunitjs": "~1.11.0",
-    "grunt-cucumber": "~0.1.1",
-    "cucumber": "~0.3.0"
-  },
-  "scripts": {
-    "test": "grunt test"
-  },
-  "repository": "",
-  "author": "Ben Boyle",
-  "license": "BSD"
+	"name": "PARANORMAL",
+	"version": "0.1.1",
+	"description": "A paradev experiment in UX testing frameworks for restricted environments",
+	"main": "grunt.js",
+	"directories": {
+		"test": "test"
+	},
+	"devDependencies": {
+		"grunt-rcukes": "0.0.4",
+		"grunt-contrib-clean": "~0.4.0",
+		"grunt-contrib-concat": "~0.1.3",
+		"grunt-contrib-watch": "~0.3.1",
+		"grunt-contrib-connect": "~0.2.0",
+		"grunt-contrib-uglify": "~0.2.0",
+		"grunt": "~0.4.1",
+		"grunt-contrib-jshint": "~0.3.0",
+		"grunt-contrib-qunit": "~0.2.0"
+	},
+	"scripts": {
+		"test": "grunt test"
+	},
+	"repository": "",
+	"author": "Ben Boyle",
+	"license": "MIT"
 }

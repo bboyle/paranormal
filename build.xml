@@ -5,6 +5,7 @@
 
 	<!-- set global properties for this build -->
 	<property name="lib.dir" location="lib"/>
+	<property name="out.dir" location="build"/>
 
 	<tstamp/>
 
@@ -98,5 +99,17 @@
 	<target name="environment" description="get environments" depends="node,npm,jruby,gems,grunt"/>
 	<target name="restart" description="clean install of all libs" depends="clean,environment"/>
 
+
+	<target name="sample" description="Create sample project">
+		<delete dir="${out.dir}"/>
+		<mkdir dir="${out.dir}"/>
+
+		<copy todir="${out.dir}">
+			<fileset dir="src"/>
+		</copy>
+		<copy todir="${out.dir}/node_modules">
+			<fileset dir="node_modules"/>
+		</copy>
+	</target>
 
 </project>

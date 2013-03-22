@@ -1,6 +1,7 @@
 # Not sure there are any files that should be ignored in this repo?
 
 # Ignore libs
-lib/*
+lib
 node_modules
 package.json
+build
