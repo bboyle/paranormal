@@ -6,6 +6,7 @@
 	<!-- set global properties for this build -->
 	<property name="lib.dir" location="lib"/>
 	<property name="out.dir" location="build"/>
+	<property name="pkg.dir" location="dist"/>
 
 	<tstamp/>
 
@@ -110,6 +111,15 @@
 		<copy todir="${out.dir}/node_modules">
 			<fileset dir="node_modules"/>
 		</copy>
+	</target>
+
+
+	<target name="package" description="Package for distribution">
+		<delete dir="${pkg.dir}"/>
+		<mkdir dir="${pkg.dir}"/>
+
+		<zip level="9" destfile="${pkg.dir}/paranormal-env.zip" basedir="." includes="profile.cmd prompt.cmd lib/**"/>
+		<zip level="9" destfile="${pkg.dir}/paranormal-sample-project.zip" basedir="build" includes="**"/>
 	</target>
 
 </project>
