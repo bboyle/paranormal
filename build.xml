@@ -18,21 +18,49 @@
 		<mkdir dir="${lib.dir}"/>
 	</target>
 
+	<target name="clean">
+		<delete dir="${lib.dir}/jruby"/>
+		<delete dir="${lib.dir}/node"/>
+		<delete dir="node_modules"/>
+	</target>
+
 
 	<!-- get node.js exe file for windows -->
 	<target name="node" description="Download node.js binary for Windows (32-bit)">
 		<!-- TODO 64bit? http://nodejs.org/dist/v0.8.20/x64/node.exe -->
 		<!-- TODO don't overwrite node.exe if it already exists -->
 		<mkdir dir="${lib.dir}/node"/>
-		<get src="http://nodejs.org/dist/v0.8.20/node.exe" dest="${lib.dir}/node/"/>
+		<get src="http://nodejs.org/dist/v0.10.1/node.exe" dest="${lib.dir}/node/"/>
 	</target>
 
 	<!-- get NPM (depends on node?) -->
 	<target name="npm" description="Download NPM (Node Package Manager)">
 		<!-- TODO don't overwrite files if they already exist? -->
-		<get src="http://nodejs.org/dist/npm/npm-1.2.9.zip" dest="${lib.dir}/node/"/>
-		<unzip src="${lib.dir}/node/npm-1.2.9.zip" dest="${lib.dir}/node/"/>
+		<get src="http://nodejs.org/dist/npm/npm-1.2.15.zip" dest="${lib.dir}/node/"/>
+		<unzip src="${lib.dir}/node/npm-1.2.15.zip" dest="${lib.dir}/node/"/>
 	</target>
+
+
+	<!-- get jruby -->
+	<target name="jruby" description="Get JRuby environment">
+		<!-- TODO don't overwrite files if already exist -->
+		<mkdir dir="${lib.dir}/jruby"/>
+		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.3/jruby-bin-1.7.3.zip" dest="${lib.dir}/jruby"/>
+		<unzip src="${lib.dir}/jruby/jruby-bin-1.7.3.zip" dest="${lib.dir}/jruby"/>
+	</target>
+
+	<!-- get gems -->
+	<target name="gems" description="Get gems for cucumber and watir-webdriver">
+		<!-- refresh based on Gemfile -->
+		<!-- note some versions of 'ffi' do not install on windows. Try v1.0.11 -->
+		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
+			<arg value="install"/>
+			<arg value="watir-webdriver"/>
+			<arg value="syntax"/>
+			<arg value="cucumber"/>
+		</exec>
+	</target>
+
 
 	<!-- get grunt (depends on npm?) -->
 	<target name="grunt" description="Install Grunt build tool for JavaScript projects">
@@ -43,41 +71,32 @@
 			<arg value="${lib.dir}/node/node_modules/npm/bin/npm-cli.js"/>
 			<!-- npm command -->
 			<arg value="install"/>
-			<!-- TODO global npm grunt? will it work when coding in another project? where does it install to? -->
 			<arg value="-g"/>
+			<arg value="grunt-cli"/>
+		</exec>
+
+		<!-- "%~dp0\node.exe" "%~dp0\.\node_modules\npm\bin\npm-cli.js" -->
+		<exec executable="${lib.dir}/node/node" dir=".">
+			<!-- node command to run npm -->
+			<arg value="${lib.dir}/node/node_modules/npm/bin/npm-cli.js"/>
+			<!-- npm command -->
+			<arg value="install"/>
 			<arg value="grunt"/>
+			<arg value="grunt-contrib-clean"/>
+			<arg value="grunt-contrib-jshint"/>
+			<arg value="grunt-contrib-connect"/>
+			<arg value="grunt-contrib-qunit"/>
+			<arg value="grunt-contrib-watch"/>
+			<arg value="grunt-contrib-concat"/>
+			<arg value="grunt-contrib-uglify"/>
+			<arg value="grunt-rcukes"/>
+			<arg value="--save-dev"/>
 		</exec>
 	</target>
 
-	<!-- get phantomjs -->
-	<target name="phantomjs" description="Install PhantomJS headless webkit browser">
-		<!-- TODO don't overwrite files if already exist -->
-		<mkdir dir="${lib.dir}/phantomjs"/>
-		<get src="http://phantomjs.googlecode.com/files/phantomjs-1.8.1-windows.zip" dest="${lib.dir}/phantomjs"/>
-		<unzip src="${lib.dir}/phantomjs/phantomjs-1.8.1-windows.zip" dest="${lib.dir}/phantomjs"/>
-	</target>
 
-
-	<!-- get jruby -->
-	<target name="jruby" description="Get JRuby environment">
-		<!-- TODO don't overwrite files if already exist -->
-		<mkdir dir="${lib.dir}/jruby"/>
-		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.2/jruby-bin-1.7.2.zip" dest="${lib.dir}/jruby"/>
-		<unzip src="${lib.dir}/jruby/jruby-bin-1.7.2.zip" dest="${lib.dir}/jruby"/>
-	</target>
-
-	<!-- get wac (colour terminal for windows) -->
-	<target name="wac" description="Get wac (Windows ANSI Color) utility">
-		<mkdir dir="${lib.dir}/wac"/>
-		<get src="https://github.com/aslakhellesoy/wac/raw/master/wac.exe" dest="${lib.dir}/wac"/>
-
-		<!-- create alias for cucumber -->
-		<echo file="${lib.dir}/wac/cucumber.cmd">
-:: pipe (jruby) cucumber through wac (Windows ANSI color)
-@echo off
-"%~dp0\..\jruby\jruby-1.7.2\bin\jruby" "%~dp0\..\jruby\jruby-1.7.2\bin\cucumber" %* | "%~dp0\wac.exe"
-		</echo>
-	</target>
+	<target name="environment" description="get environments" depends="node,npm,jruby,gems,grunt"/>
+	<target name="restart" description="clean install of all libs" depends="clean,environment"/>
 
 
 </project>

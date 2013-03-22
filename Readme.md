@@ -23,3 +23,15 @@ Starting with…
 
 * *ant* (java based) to download and manage other files
 * *gruntjs* (node required) for integrated jshint and qunit tests
+* *jruby* for cucumber and watir-webdriver
+
+Testing framework
+-----------------
+
+| Type of test | Language | Requirements | Description                                                                       |
+|:-------------|:---------|:-------------|:----------------------------------------------------------------------------------|
+| Acceptance   | Cucumber | ruby/jruby   | Behaviour driven development—ruby library has more features than cucumber-js port |
+| Integration  | TBA      | -            | -                                                                                 |
+| Unit         | QUnit    | grunt        | Javascript unit tests supported by grunt, QUnit and PhantomJS                     |
+| Style        | jshint   | grunt        | Check code style consistency                                                      |
+| Syntax       | jshint   | grunt        | Check javascript syntax                                                           |
