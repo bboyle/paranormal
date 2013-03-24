@@ -3,10 +3,10 @@ Feature: Paranormal
   As a UI developer
   I want to test my code
 
-  Scenario: UX test framework
-    Given I have 'PhantomJS' on 'Desktop'
-    When I open the test page
-    Then I should see 'PARANORMAL' as the page title
+  Scenario: Learn about paranormal
+    Given I have paranormal ready
+    When I go to github
+    Then I should see 'PARANORMAL'
 
 # cucumber-js does not support examples
 # https://github.com/cucumber/cucumber-js/issues/10
