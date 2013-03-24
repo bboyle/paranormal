@@ -38,8 +38,8 @@ But given this repo is for environments that are restrictive, you probably want 
 2. This folder should contain:
    * [prompt.cmd and profile.cmd][paranormal-prompt] files from this repo
    * a lib folder containing:
-     * [node][paranormal-grunt]—node with packages for a grunt development environment
-     * [jruby][paranormal-jruby]—jruby with ruby gems for cucumber, watir-webdriver, syntax and compass
+     * node—node with packages for a grunt development environment ([node+packages (zipped)][paranormal-grunt])
+     * jruby—jruby with ruby gems for cucumber, watir-webdriver, syntax and compass ([jruby+gems (zipped)][paranormal-jruby])
      * [apache-ant-1.9.0][ant]—optional (I find it useful for file management including copy, concat, regexp, xslt and zip support)
 3. Create a separate folder for your project
 4. Start with the [sample project][paranormal-sample-project] which includes:
@@ -47,7 +47,7 @@ But given this repo is for environments that are restrictive, you probably want 
    * sample qunit tests and jshint config files
    * sample cucumber test
    * sample grunt configuration
-5. Double click `prompt.cmd` to open a new prompt and type `grunt` to run the build.
+5. Double click `prompt.cmd` to open a new prompt and type `grunt` to run.
 
 [paranormal-prompt]: https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-prompt.zip
 [paranormal-grunt]: https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-grunt.zip
@@ -81,6 +81,7 @@ What are the tools?
 [grunt-contrib-compass]: https://github.com/gruntjs/grunt-contrib-compass
 [grunt-contrib-csslint]: https://github.com/gruntjs/grunt-contrib-csslint
 [grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
+[grunt-contrib-qunit]: https://github.com/gruntjs/grunt-contrib-qunit
 [grunt-contrib-uglify]: https://github.com/gruntjs/grunt-contrib-uglify
 [grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
 [grunt-rcukes]: https://github.com/jrcryer/grunt-rcukes
