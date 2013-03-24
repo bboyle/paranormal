@@ -125,8 +125,8 @@
 		<mkdir dir="${pkg.dir}"/>
 
 		<zip level="9" destfile="${pkg.dir}/paranormal-env-prompt.zip" basedir="." includes="profile.cmd prompt.cmd"/>
-		<zip level="9" destfile="${pkg.dir}/paranormal-env-grunt.zip" basedir="." includes="lib/node/**"/>
-		<zip level="9" destfile="${pkg.dir}/paranormal-env-cucumber.zip" basedir="." includes="lib/jruby/**"/>
+		<zip level="9" destfile="${pkg.dir}/paranormal-env-grunt.zip" basedir="lib" includes="node/**"/>
+		<zip level="9" destfile="${pkg.dir}/paranormal-env-jruby.zip" basedir="lib" includes="jruby/**"/>
 		<zip level="9" destfile="${pkg.dir}/paranormal-sample-project.zip" basedir="build" includes="**"/>
 	</target>
 
