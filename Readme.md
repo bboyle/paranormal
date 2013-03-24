@@ -39,7 +39,7 @@ But given this repo is for environments that are restrictive, you probably want 
    * [prompt.cmd and profile.cmd][paranormal-prompt] files from this repo
    * a lib folder containing:
      * [node][paranormal-grunt]—node with packages for a grunt development environment
-     * [jruby][paranormal-ruby]—jruby with ruby gems for cucumber, watir-webdriver, syntax and compass
+     * [jruby][paranormal-jruby]—jruby with ruby gems for cucumber, watir-webdriver, syntax and compass
      * [apache-ant-1.9.0][ant]—optional (I find it useful for file management including copy, concat, regexp, xslt and zip support)
 3. Create a separate folder for your project
 4. Start with the [sample project][paranormal-sample-project] which includes:
@@ -49,11 +49,11 @@ But given this repo is for environments that are restrictive, you probably want 
    * sample grunt configuration
 5. Double click `prompt.cmd` to open a new prompt and type `grunt` to run the build.
 
-[paranormal-prompt][https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-prompt.zip]
-[paranormal-grunt][https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-grunt.zip]
-[paranormal-ruby][https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-ruby.zip]
-[ant-download][http://ant.apache.org/bindownload.cgi]
-[paranormal-sample-project][https://dl.dropbox.com/u/15743075/paranormal/paranormal-sample-project.zip]
+[paranormal-prompt]: https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-prompt.zip
+[paranormal-grunt]: https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-grunt.zip
+[paranormal-jruby]: https://dl.dropbox.com/u/15743075/paranormal/paranormal-env-jruby.zip
+[paranormal-sample-project]: https://dl.dropbox.com/u/15743075/paranormal/paranormal-sample-project.zip
+[ant]: http://ant.apache.org/
 
 
 What are the tools?
@@ -71,21 +71,21 @@ What are the tools?
 | [UglifyJS][uglifyjs]               | [grunt-contrib-uglify]             | Javascript minification tool              |
 | [Watir WebDriver][watir-webdriver] | ruby gem                           | Drives a web browser for automated tests  |
 
-[compass][http://compass-style.org/]
-[csslint][https://github.com/stubbornella/csslint/]
-[cucumber][http://cukes.info/]
-[grunt][http://gruntjs.com/]
-[grunt-contrib-clean][https://github.com/gruntjs/grunt-contrib-clean]
-[grunt-contrib-concat][https://github.com/gruntjs/grunt-contrib-concat]
-[grunt-contrib-connect][https://github.com/gruntjs/grunt-contrib-connect]
-[grunt-contrib-compass][https://github.com/gruntjs/grunt-contrib-compass]
-[grunt-contrib-csslint][https://github.com/gruntjs/grunt-contrib-csslint]
-[grunt-contrib-jshint][https://github.com/gruntjs/grunt-contrib-jshint]
-[grunt-contrib-uglify][https://github.com/gruntjs/grunt-contrib-uglify]
-[grunt-contrib-watch][https://github.com/gruntjs/grunt-contrib-watch]
-[grunt-rcukes][https://github.com/jrcryer/grunt-rcukes]
-[jshint][http://www.jshint.com/]
-[minitest][http://www.ruby-doc.org/stdlib-1.9.3/libdoc/minitest/unit/rdoc/MiniTest.html]
-[qunit][http://qunitjs.com/]
-[uglifyjs][http://lisperator.net/uglifyjs/]
-[watir-webdriver][http://watirwebdriver.com/]
+[compass]: http://compass-style.org/
+[csslint]: https://github.com/stubbornella/csslint/
+[cucumber]: http://cukes.info/
+[grunt]: http://gruntjs.com/
+[grunt-contrib-clean]: https://github.com/gruntjs/grunt-contrib-clean
+[grunt-contrib-concat]: https://github.com/gruntjs/grunt-contrib-concat
+[grunt-contrib-connect]: https://github.com/gruntjs/grunt-contrib-connect
+[grunt-contrib-compass]: https://github.com/gruntjs/grunt-contrib-compass
+[grunt-contrib-csslint]: https://github.com/gruntjs/grunt-contrib-csslint
+[grunt-contrib-jshint]: https://github.com/gruntjs/grunt-contrib-jshint
+[grunt-contrib-uglify]: https://github.com/gruntjs/grunt-contrib-uglify
+[grunt-contrib-watch]: https://github.com/gruntjs/grunt-contrib-watch
+[grunt-rcukes]: https://github.com/jrcryer/grunt-rcukes
+[jshint]: http://www.jshint.com/
+[minitest]: http://www.ruby-doc.org/stdlib-1.9.3/libdoc/minitest/unit/rdoc/MiniTest.html
+[qunit]: http://qunitjs.com/
+[uglifyjs]: http://lisperator.net/uglifyjs/
+[watir-webdriver]: http://watirwebdriver.com/
