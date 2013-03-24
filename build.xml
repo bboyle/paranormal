@@ -23,7 +23,7 @@
 	<target name="clean">
 		<delete dir="${lib.dir}/jruby"/>
 		<delete dir="${lib.dir}/node"/>
-		<delete dir="node_modules"/>
+		<delete dir="src/node_modules"/>
 	</target>
 
 
@@ -53,13 +53,19 @@
 
 	<!-- get gems -->
 	<target name="gems" description="Get gems for cucumber and watir-webdriver">
-		<!-- refresh based on Gemfile -->
 		<!-- note some versions of 'ffi' do not install on windows. Try v1.0.11 -->
+		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
+			<arg value="install"/>
+			<arg value="ffi"/>
+			<arg value="-v"/>
+			<arg value="1.0.11"/>
+		</exec>
 		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
 			<arg value="install"/>
 			<arg value="watir-webdriver"/>
 			<arg value="syntax"/>
 			<arg value="cucumber"/>
+			<arg value="compass"/>
 		</exec>
 	</target>
 
@@ -78,7 +84,7 @@
 		</exec>
 
 		<!-- "%~dp0\node.exe" "%~dp0\.\node_modules\npm\bin\npm-cli.js" -->
-		<exec executable="${lib.dir}/node/node" dir=".">
+		<exec executable="${lib.dir}/node/node" dir="src">
 			<!-- node command to run npm -->
 			<arg value="${lib.dir}/node/node_modules/npm/bin/npm-cli.js"/>
 			<!-- npm command -->
