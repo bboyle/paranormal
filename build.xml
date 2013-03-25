@@ -3,26 +3,18 @@
 	<description>paranormal</description>
 
 
-	<!-- set global properties for this build -->
-	<property name="lib.dir" location="lib"/>
-	<property name="out.dir" location="build"/>
-	<property name="pkg.dir" location="dist"/>
-
-	<tstamp/>
-
-
 	<target name="help">
 		<echo message="use 'ant -p' to see build targets"/>
 	</target>
 
 
 	<target name="init">
-		<mkdir dir="${lib.dir}"/>
+		<mkdir dir="lib"/>
 	</target>
 
 	<target name="clean">
-		<delete dir="${lib.dir}/jruby"/>
-		<delete dir="${lib.dir}/node"/>
+		<delete dir="lib/jruby"/>
+		<delete dir="lib/node"/>
 		<delete dir="src/node_modules"/>
 	</target>
 
@@ -31,36 +23,36 @@
 	<target name="node" description="Download node.js binary for Windows (32-bit)">
 		<!-- TODO 64bit? http://nodejs.org/dist/v0.8.20/x64/node.exe -->
 		<!-- TODO don't overwrite node.exe if it already exists -->
-		<mkdir dir="${lib.dir}/node"/>
-		<get src="http://nodejs.org/dist/v0.10.1/node.exe" dest="${lib.dir}/node/"/>
+		<mkdir dir="lib/node"/>
+		<get src="http://nodejs.org/dist/v0.10.1/node.exe" dest="lib/node/"/>
 	</target>
 
 	<!-- get NPM (depends on node?) -->
 	<target name="npm" description="Download NPM (Node Package Manager)">
 		<!-- TODO don't overwrite files if they already exist? -->
-		<get src="http://nodejs.org/dist/npm/npm-1.2.15.zip" dest="${lib.dir}/node/"/>
-		<unzip src="${lib.dir}/node/npm-1.2.15.zip" dest="${lib.dir}/node/"/>
+		<get src="http://nodejs.org/dist/npm/npm-1.2.15.zip" dest="lib/node/"/>
+		<unzip src="lib/node/npm-1.2.15.zip" dest="lib/node/"/>
 	</target>
 
 
 	<!-- get jruby -->
 	<target name="jruby" description="Get JRuby environment">
 		<!-- TODO don't overwrite files if already exist -->
-		<mkdir dir="${lib.dir}/jruby"/>
-		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.3/jruby-bin-1.7.3.zip" dest="${lib.dir}/jruby"/>
-		<unzip src="${lib.dir}/jruby/jruby-bin-1.7.3.zip" dest="${lib.dir}/jruby"/>
+		<mkdir dir="lib/jruby"/>
+		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.3/jruby-bin-1.7.3.zip" dest="lib/jruby"/>
+		<unzip src="lib/jruby/jruby-bin-1.7.3.zip" dest="lib/jruby"/>
 	</target>
 
 	<!-- get gems -->
 	<target name="gems" description="Get gems for cucumber and watir-webdriver">
 		<!-- note some versions of 'ffi' do not install on windows. Try v1.0.11 -->
-		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
+		<exec executable="lib/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
 			<arg value="install"/>
 			<arg value="ffi"/>
 			<arg value="-v"/>
 			<arg value="1.0.11"/>
 		</exec>
-		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
+		<exec executable="lib/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
 			<arg value="install"/>
 			<arg value="watir-webdriver"/>
 			<arg value="syntax"/>
@@ -71,12 +63,12 @@
 
 
 	<!-- get grunt (depends on npm?) -->
-	<target name="grunt" description="Install Grunt build tool for JavaScript projects">
+	<target name="grunt" description="Get Grunt build tool (and plugins) for JavaScript projects">
 		<!-- TODO don't overwrite files if they already exist? -->
 		<!-- "%~dp0\node.exe" "%~dp0\.\node_modules\npm\bin\npm-cli.js" -->
-		<exec executable="node" dir="${lib.dir}/node/">
+		<exec executable="node" dir="lib/node/">
 			<!-- node command to run npm -->
-			<arg value="${lib.dir}/node/node_modules/npm/bin/npm-cli.js"/>
+			<arg value="lib/node/node_modules/npm/bin/npm-cli.js"/>
 			<!-- npm command -->
 			<arg value="install"/>
 			<arg value="-g"/>
@@ -84,9 +76,9 @@
 		</exec>
 
 		<!-- "%~dp0\node.exe" "%~dp0\.\node_modules\npm\bin\npm-cli.js" -->
-		<exec executable="${lib.dir}/node/node" dir="src">
+		<exec executable="lib/node/node" dir="src">
 			<!-- node command to run npm -->
-			<arg value="${lib.dir}/node/node_modules/npm/bin/npm-cli.js"/>
+			<arg value="lib/node/node_modules/npm/bin/npm-cli.js"/>
 			<!-- npm command -->
 			<arg value="install"/>
 			<arg value="grunt"/>
@@ -108,26 +100,26 @@
 
 
 	<target name="sample" description="Create sample project">
-		<delete dir="${out.dir}"/>
-		<mkdir dir="${out.dir}"/>
+		<delete dir="build"/>
+		<mkdir dir="build"/>
 
-		<copy todir="${out.dir}">
+		<copy todir="build">
 			<fileset dir="src"/>
 		</copy>
-		<copy todir="${out.dir}/node_modules">
+		<copy todir="build/node_modules">
 			<fileset dir="node_modules"/>
 		</copy>
 	</target>
 
 
 	<target name="package" description="Package for distribution">
-		<delete dir="${pkg.dir}"/>
-		<mkdir dir="${pkg.dir}"/>
+		<delete dir="dist"/>
+		<mkdir dir="dist"/>
 
-		<zip level="9" destfile="${pkg.dir}/paranormal-env-prompt.zip" basedir="." includes="profile.cmd prompt.cmd"/>
-		<zip level="9" destfile="${pkg.dir}/paranormal-env-grunt.zip" basedir="lib" includes="node/**"/>
-		<zip level="9" destfile="${pkg.dir}/paranormal-env-jruby.zip" basedir="lib" includes="jruby/**"/>
-		<zip level="9" destfile="${pkg.dir}/paranormal-sample-project.zip" basedir="build" includes="**"/>
+		<zip level="9" destfile="dist/paranormal-env-prompt.zip" basedir="." includes="profile.cmd prompt.cmd"/>
+		<zip level="9" destfile="dist/paranormal-env-grunt.zip" basedir="." includes="lib/node/**"/>
+		<zip level="9" destfile="dist/paranormal-env-jruby.zip" basedir="." includes="lib/jruby/**"/>
+		<zip level="9" destfile="dist/paranormal-sample-project.zip" basedir="build" includes="**"/>
 	</target>
 
 </project>
