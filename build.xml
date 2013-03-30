@@ -26,13 +26,13 @@
 	<target name="node" description="Download node.js binary for Windows (32-bit)">
 		<!-- TODO 64bit? http://nodejs.org/dist/v0.8.20/x64/node.exe -->
 		<mkdir dir="${lib.dir}/node"/>
-		<get src="http://nodejs.org/dist/v0.10.1/node.exe" dest="${lib.dir}/node/"/>
+		<get src="http://nodejs.org/dist/v0.10.2/node.exe" dest="${lib.dir}/node/"/>
 	</target>
 
 	<!-- get NPM (depends on node?) -->
 	<target name="npm" description="Download NPM (Node Package Manager)">
-		<get src="http://nodejs.org/dist/npm/npm-1.2.15.zip" dest="${lib.dir}/node/"/>
-		<unzip src="${lib.dir}/node/npm-1.2.15.zip" dest="${lib.dir}/node/"/>
+		<get src="http://nodejs.org/dist/npm/npm-1.2.16.zip" dest="${lib.dir}/node/"/>
+		<unzip src="${lib.dir}/node/npm-1.2.16.zip" dest="${lib.dir}/node/"/>
 	</target>
 
 
