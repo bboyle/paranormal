@@ -94,6 +94,10 @@
 	</target>
 
 
+	<!-- get python -->
+	<!-- http://docs.python-guide.org/en/latest/starting/install/win.html -->
+
+
 	<target name="environment" description="get environments" depends="node,npm,jruby,gems,grunt"/>
 
 
@@ -114,6 +118,7 @@
 		<zip level="9" destfile="dist/paranormal-env-prompt.zip" basedir="." includes="profile.cmd prompt.cmd"/>
 		<zip level="9" destfile="dist/paranormal-env-grunt.zip" basedir="." includes="lib/node/**"/>
 		<zip level="9" destfile="dist/paranormal-env-jruby.zip" basedir="." includes="lib/jruby/**"/>
+		<!-- python not being packaged -->
 		<zip level="9" destfile="dist/paranormal-sample-project.zip" basedir="build" includes="**"/>
 	</target>
 

@@ -9,5 +9,12 @@ set PATH=%~d0%~p0lib\node;%PATH%
 echo adding jruby to path
 set PATH=%~d0%~p0lib\jruby\jruby-1.7.3\bin;%PATH%
 
+echo adding webdriver to path
+set PATH=%~d0%~p0lib\chromedriver;%PATH%
+set PATH=%~d0%~p0lib\IEDriverServer;%PATH%
+
+echo adding python to path
+set PATH=%~d0%~p0lib\python\;%PATH%
+
 echo ready
 cls

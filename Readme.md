@@ -26,6 +26,7 @@ Starting with…
 * *ant* (java based) to download and manage other files
 * *gruntjs* (node required) for integrated jshint and QUnit tests
 * *jruby* for cucumber and watir-webdriver
+* *python* has been added in this branch (for personal interest)
 
 
 Getting started
@@ -41,6 +42,7 @@ But given this repo is for environments that are restrictive, you probably want 
      * node—node with packages for a grunt development environment ([node+packages (zipped)][paranormal-grunt])
      * jruby—jruby with ruby gems for cucumber, watir-webdriver, syntax and compass ([jruby+gems (zipped)][paranormal-jruby])
      * [apache-ant-1.9.0][ant]—optional (I find it useful for file management including copy, concat, regexp, xslt and zip support)
+     * [python][python]—optional (I am learning it for personal interest)
 3. Create a separate folder for your project
 4. Start with the [sample project][paranormal-sample-project] which includes:
    * specific grunt packages: concat, uglify, watch, jshint, qunit, connect, rcukes, csslint and compass
@@ -87,6 +89,7 @@ What are the tools?
 [grunt-rcukes]: https://github.com/jrcryer/grunt-rcukes
 [jshint]: http://www.jshint.com/
 [minitest]: http://www.ruby-doc.org/stdlib-1.9.3/libdoc/minitest/unit/rdoc/MiniTest.html
+[python]: http://python.org/
 [qunit]: http://qunitjs.com/
 [uglifyjs]: http://lisperator.net/uglifyjs/
 [watir-webdriver]: http://watirwebdriver.com/
