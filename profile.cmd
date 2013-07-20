@@ -14,7 +14,7 @@ set PATH=%~d0%~p0lib\chromedriver;%PATH%
 set PATH=%~d0%~p0lib\IEDriverServer;%PATH%
 
 echo adding python to path
-set PATH=%~d0%~p0lib\python\;%PATH%
+set PATH=%~d0%~p0lib\python\;%~d0%~p0lib\python\scripts\;%PATH%
 
 echo ready
 cls

@@ -96,6 +96,40 @@
 
 	<!-- get python -->
 	<!-- http://docs.python-guide.org/en/latest/starting/install/win.html -->
+	<target name="python" description="Install python (not implemented)">
+		<echo>Not implemented!</echo>
+		<echo>Please install python manually following these instructions:</echo>
+		<echo>http://docs.python-guide.org/en/latest/starting/install/win.html</echo>
+	</target>
+
+	<!-- get pip (python package manager) -->
+	<!-- http://www.pip-installer.org/en/latest/installing.html -->
+	<target name="pip" description="Install pip (python package manager)" depends="python">
+		<mkdir dir="${lib.dir}/pip"/>
+
+		<!-- need setuptools -->
+		<!-- https://pypi.python.org/pypi/setuptools/0.9.6#windows -->
+		<get src="http://cdn.bitbucket.org/pypa/setuptools/downloads/ez_setup.py" dest="${lib.dir}/pip"/>
+		<exec executable="${lib.dir}/python/python.exe" dir="${lib.dir}/pip">
+			<arg value="ez_setup.py"/>
+		</exec>
+
+		<!-- get pip -->
+		<get src="https://raw.github.com/pypa/pip/master/contrib/get-pip.py" dest="${lib.dir}/pip"/>
+		<exec executable="${lib.dir}/python/python.exe" dir="${lib.dir}/pip">
+			<arg value="get-pip.py"/>
+		</exec>
+	</target>
+
+	<!-- get python virtual environment -->
+	<!-- http://www.virtualenv.org/en/latest/#installation -->
+	<target name="virtualenv" description="Install python virtual environment" depends="pip">
+		<mkdir dir="${lib.dir}/virtualenv"/>
+		<exec executable="${lib.dir}/python/scripts/pip.exe" dir=".">
+			<arg value="install"/>
+			<arg value="virtualenv"/>
+		</exec>		
+	</target>
 
 
 	<target name="environment" description="get environments" depends="node,npm,jruby,gems,grunt"/>
