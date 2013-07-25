@@ -56,6 +56,7 @@
 		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
 			<arg value="install"/>
 			<arg value="watir-webdriver"/>
+			<arg value="watir-webdriver-performance"/>
 			<arg value="syntax"/>
 			<arg value="cucumber"/>
 			<arg value="compass"/>
