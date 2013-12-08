@@ -25,35 +25,34 @@
 
 	<!-- get node.js exe file for windows -->
 	<target name="node" description="Download node.js binary for Windows (32-bit)">
-		<!-- TODO 64bit? http://nodejs.org/dist/v0.8.20/x64/node.exe -->
 		<mkdir dir="${lib.dir}/node"/>
-		<get src="http://nodejs.org/dist/v0.10.2/node.exe" dest="${lib.dir}/node/"/>
+		<get src="http://nodejs.org/dist/v0.10.22/x64/node.exe" dest="${lib.dir}/node/"/>
 	</target>
 
 	<!-- get NPM (depends on node?) -->
 	<target name="npm" description="Download NPM (Node Package Manager)">
-		<get src="http://nodejs.org/dist/npm/npm-1.2.16.zip" dest="${lib.dir}/node/"/>
-		<unzip src="${lib.dir}/node/npm-1.2.16.zip" dest="${lib.dir}/node/"/>
+		<get src="http://nodejs.org/dist/npm/npm-1.3.15.zip" dest="${lib.dir}/node/"/>
+		<unzip src="${lib.dir}/node/npm-1.3.15.zip" dest="${lib.dir}/node/"/>
 	</target>
 
 
 	<!-- get jruby -->
 	<target name="jruby" description="Get JRuby environment">
 		<mkdir dir="${lib.dir}/jruby"/>
-		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.3/jruby-bin-1.7.3.zip" dest="${lib.dir}/jruby"/>
-		<unzip src="${lib.dir}/jruby/jruby-bin-1.7.3.zip" dest="${lib.dir}/jruby"/>
+		<get src="http://jruby.org.s3.amazonaws.com/downloads/1.7.9/jruby-bin-1.7.9.zip" dest="${lib.dir}/jruby"/>
+		<unzip src="${lib.dir}/jruby/jruby-bin-1.7.9.zip" dest="${lib.dir}/jruby"/>
 	</target>
 
 	<!-- get gems -->
 	<target name="gems" description="Get gems for cucumber and watir-webdriver">
 		<!-- note some versions of 'ffi' do not install on windows. Try v1.0.11 -->
-		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
+		<exec executable="${lib.dir}/jruby/jruby-1.7.9/bin/gem.bat" dir=".">
 			<arg value="install"/>
 			<arg value="ffi"/>
 			<arg value="-v"/>
 			<arg value="1.0.11"/>
 		</exec>
-		<exec executable="${lib.dir}/jruby/jruby-1.7.3/bin/gem.bat" dir=".">
+		<exec executable="${lib.dir}/jruby/jruby-1.7.9/bin/gem.bat" dir=".">
 			<arg value="install"/>
 			<arg value="watir-webdriver"/>
 			<arg value="watir-webdriver-performance"/>
@@ -82,14 +81,16 @@
 			<arg value="install"/>
 			<arg value="grunt"/>
 			<arg value="grunt-contrib-clean"/>
-			<arg value="grunt-contrib-jshint"/>
-			<arg value="grunt-contrib-connect"/>
-			<arg value="grunt-contrib-qunit"/>
-			<arg value="grunt-contrib-watch"/>
-			<arg value="grunt-contrib-concat"/>
-			<arg value="grunt-contrib-uglify"/>
-			<arg value="grunt-contrib-csslint"/>
 			<arg value="grunt-contrib-compass"/>
+			<arg value="grunt-contrib-concat"/>
+			<arg value="grunt-contrib-connect"/>
+			<arg value="grunt-contrib-copy"/>
+			<arg value="grunt-contrib-csslint"/>
+			<arg value="grunt-contrib-jshint"/>
+			<arg value="grunt-contrib-qunit"/>
+			<arg value="grunt-contrib-uglify"/>
+			<arg value="grunt-contrib-watch"/>
+			<arg value="grunt-jsbeautifier"/>
 			<arg value="grunt-rcukes"/>
 			<arg value="--save-dev"/>
 		</exec>
